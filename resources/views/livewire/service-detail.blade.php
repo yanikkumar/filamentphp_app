@@ -1,6 +1,4 @@
 <main>
-
-
     <section class="page-header bg-tertiary">
         <div class="container">
             <div class="row">

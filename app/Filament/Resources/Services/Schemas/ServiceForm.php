@@ -6,6 +6,8 @@ use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Schemas\Components\Utilities\Set;
+use Illuminate\Support\Str;
 use Filament\Schemas\Schema;
 
 class ServiceForm
@@ -15,7 +17,10 @@ class ServiceForm
         return $schema
             ->components([
                 TextInput::make('title')
+                    ->live(onBlur: true)
+                    ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
                     ->required(),
+                TextInput::make('slug'),
                 TextInput::make('icon_class'),
                 TextInput::make('short_desc')->label('Short Description')
                     ->required(),

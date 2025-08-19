@@ -8,9 +8,9 @@ use Livewire\Component;
 class ServiceDetail extends Component
 {
     public $service;
-    public function mount($id)
+    public function mount($slug)
     {
-        $this->service = Service::findOrFail($id);
+        $this->service = Service::where('slug', $slug)->first();
     }
     public function render()
     {

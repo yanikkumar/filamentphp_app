@@ -13,6 +13,7 @@ return new class extends Migration {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('slug')->nullable();
             $table->string('icon_class')->nullable();
             $table->string('short_desc');
             $table->text('description')->nullable();
